@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline{
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-gray: var(--gray);
+  --color-purple: var(--purple);
+  --color-danger: var(--danger);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+:root{
+  --primary: #7C5DFA;
+  --secondary: #1E2139;
+  --gray: #DFE3FA;
+  --purple: #7E88C3;
+  --danger: #EC5757;
+  --background: #F8F8FB;
+  --foreground: #141625;
+}
+
+.dark{
+  --primary: #9277FF;
+  --secondary: #252945;
+  --gray: #888EB0;  
+  --purple: #0C0E16;  
+  --danger: #e77e7e;
+  --background: #141625;
+  --foreground: #F8F8FB;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
