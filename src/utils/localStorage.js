@@ -1,9 +1,7 @@
-// Session Storage Utility Functions
 const STORAGE_KEY = "invoice-data";
 const DARK_MODE_KEY = "invoice-dark-mode";
 
 export const localStorage_invoices = {
-  // Get all invoices from sessionStorage
   getAll: () => {
     try {
       const stored = window.sessionStorage.getItem(STORAGE_KEY);
@@ -14,13 +12,11 @@ export const localStorage_invoices = {
     }
   },
 
-  // Get single invoice
   getOne: (id) => {
     const invoices = localStorage_invoices.getAll();
     return invoices.find((inv) => inv.id === id) || null;
   },
 
-  // Save invoices
   saveAll: (invoices) => {
     try {
       window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(invoices));
@@ -31,7 +27,6 @@ export const localStorage_invoices = {
     }
   },
 
-  // Create new invoice
   create: (invoice) => {
     const invoices = localStorage_invoices.getAll();
     invoices.push(invoice);
@@ -39,7 +34,6 @@ export const localStorage_invoices = {
     return invoice;
   },
 
-  // Update invoice
   update: (id, updatedInvoice) => {
     const invoices = localStorage_invoices.getAll();
     const index = invoices.findIndex((inv) => inv.id === id);
@@ -51,7 +45,6 @@ export const localStorage_invoices = {
     return null;
   },
 
-  // Delete invoice
   delete: (id) => {
     const invoices = localStorage_invoices.getAll();
     const filtered = invoices.filter((inv) => inv.id !== id);
@@ -60,7 +53,6 @@ export const localStorage_invoices = {
   },
 };
 
-// Dark mode utilities
 export const darkModeStorage = {
   get: () => {
     try {

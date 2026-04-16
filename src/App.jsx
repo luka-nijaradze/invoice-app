@@ -11,7 +11,7 @@ import {
 } from "./utils/localStorage.js";
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(() => darkModeStorage.get());
+  const [darkMode, setDarkMode] = useState(false);
 
   const [invoices, setInvoices] = useState(() => {
     if (typeof window !== "undefined") {
@@ -27,7 +27,6 @@ export default function App() {
   const [editingInvoice, setEditingInvoice] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  // Sync dark mode to <html> class and localStorage
   useEffect(() => {
     const root = document.documentElement;
     if (darkMode) {
@@ -38,7 +37,6 @@ export default function App() {
     darkModeStorage.set(darkMode);
   }, [darkMode]);
 
-  // Persist invoices
   useEffect(() => {
     localStorage_invoices.saveAll(invoices);
   }, [invoices]);

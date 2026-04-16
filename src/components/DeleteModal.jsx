@@ -6,96 +6,29 @@ export default function DeleteModal({
   onCancel,
   onConfirm,
 }) {
-  const modalBg = darkMode ? "hsl(233 28% 16%)" : "#fff";
-  const text = darkMode ? "hsl(240 20% 88%)" : "hsl(231 28% 22%)";
-  const subText = darkMode ? "hsl(231 15% 52%)" : "hsl(231 15% 55%)";
-
   return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 2000,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "rgba(0,0,0,0.5)",
-      }}
-    >
+    <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/50">
       <div
-        style={{
-          background: modalBg,
-          borderRadius: 8,
-          padding: "48px",
-          maxWidth: 480,
-          width: "90%",
-          boxShadow: "0 10px 40px rgba(0,0,0,0.3)",
-        }}
+        className="bg-white dark:bg-[hsl(233_28%_16%)] rounded-lg p-12 max-w-[480px] w-[90%] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2
-          style={{
-            color: text,
-            fontSize: 24,
-            fontWeight: 700,
-            marginBottom: 16,
-          }}
-        >
+        <h2 className="text-[hsl(231_28%_22%)] dark:text-[hsl(240_20%_88%)] text-2xl font-bold mb-4">
           Confirm Deletion
         </h2>
-        <p
-          style={{
-            color: subText,
-            fontSize: 13,
-            lineHeight: 1.8,
-            marginBottom: 32,
-          }}
-        >
+        <p className="text-[hsl(231_15%_55%)] dark:text-[hsl(231_15%_52%)] text-sm leading-relaxed mb-8">
           Are you sure you want to delete invoice #{invoiceId}? This action
           cannot be undone.
         </p>
-        <div style={{ display: "flex", justifyContent: "flex-end", gap: 8 }}>
+        <div className="flex justify-end gap-2">
           <button
             onClick={onCancel}
-            style={{
-              background: darkMode ? "hsl(233 28% 20%)" : "hsl(240 20% 96%)",
-              color: darkMode ? "#DFE3FA" : "#7E88C3",
-              border: "none",
-              borderRadius: 999,
-              padding: "14px 24px",
-              fontWeight: 700,
-              fontSize: 13,
-              cursor: "pointer",
-              transition: "background 0.2s",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.background = darkMode
-                ? "hsl(233 28% 26%)"
-                : "hsl(240 20% 90%)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.background = darkMode
-                ? "hsl(233 28% 20%)"
-                : "hsl(240 20% 96%)")
-            }
+            className="bg-[hsl(240_20%_96%)] dark:bg-[hsl(233_28%_20%)] text-[#7E88C3] dark:text-[#DFE3FA] border-none rounded-full py-3.5 px-6 font-bold text-sm cursor-pointer transition-colors hover:bg-[hsl(240_20%_90%)] dark:hover:bg-[hsl(233_28%_26%)]"
           >
             Cancel
           </button>
           <button
             onClick={onConfirm}
-            style={{
-              background: "#EC5757",
-              color: "#fff",
-              border: "none",
-              borderRadius: 999,
-              padding: "14px 24px",
-              fontWeight: 700,
-              fontSize: 13,
-              cursor: "pointer",
-              transition: "background 0.2s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#FF9797")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "#EC5757")}
+            className="bg-[#EC5757] text-white border-none rounded-full py-3.5 px-6 font-bold text-sm cursor-pointer transition-colors hover:bg-[#FF9797]"
           >
             Delete
           </button>

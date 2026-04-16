@@ -172,7 +172,6 @@ export default function InvoiceForm({
         pointerEvents: open ? "auto" : "none",
       }}
     >
-      {/* Overlay */}
       <div
         style={{
           position: "absolute",
@@ -188,7 +187,6 @@ export default function InvoiceForm({
         onClick={onClose}
       />
 
-      {/* Drawer */}
       <div
         style={{
           position: "fixed",

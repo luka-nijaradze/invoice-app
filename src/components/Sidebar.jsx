@@ -2,49 +2,10 @@ import React from "react";
 import { Moon, Sun } from "lucide-react";
 
 export default function Sidebar({ darkMode, onToggleDark }) {
-  const sidebarBg = darkMode ? "hsl(233 30% 11%)" : "hsl(233 32% 18%)";
-  const borderColor = darkMode
-    ? "hsl(233 28% 22%)"
-    : "hsla(233, 30%, 16%, 0.45)";
-  const textColor = darkMode ? "hsl(240 20% 88%)" : "hsl(231 28% 22%)";
-
   return (
-    <div
-      style={{
-        width: 103,
-        minWidth: 103,
-        background: sidebarBg,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "120px 0 24px",
-        borderRight: `1px solid ${borderColor}`,
-        position: "relative",
-        zIndex: 1002,
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 24,
-          width: "100%",
-        }}
-      >
-        {/* Logo panel */}
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            width: 103,
-            height: 103,
-            borderRadius: "0 44px 44px 0",
-            overflow: "hidden",
-          }}
-        >
+    <div className="w-[103px] min-w-[103px] bg-[hsl(233_32%_18%)] dark:bg-[hsl(233_30%_11%)] flex flex-col justify-between items-center pt-32 pb-16 px-0 border-r border-[hsla(233,30%,16%,0.45)] dark:border-[hsl(233_28%_22%)] relative z-[1002]">
+      <div className="flex flex-col items-center gap-6 w-full">
+        <div className="absolute left-0 top-0 w-[103px] h-[103px] rounded-r-[44px] overflow-hidden">
           <svg
             width="103"
             height="103"
@@ -87,65 +48,22 @@ export default function Sidebar({ darkMode, onToggleDark }) {
         </div>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 24,
-        }}
-      >
+      <div className="flex flex-col items-center gap-6">
         <button
           onClick={onToggleDark}
-          style={{
-            width: 40,
-            height: 40,
-            borderRadius: "50%",
-            border: "none",
-            background: darkMode
-              ? "rgba(255,255,255,0.08)"
-              : "rgba(15, 23, 42, 0.05)",
-            color: textColor,
-            cursor: "pointer",
-            display: "grid",
-            placeItems: "center",
-          }}
+          className="w-10 h-10 rounded-full border-none bg-[rgba(15,23,42,0.05)] dark:bg-[rgba(255,255,255,0.08)] text-[hsl(231_28%_22%)] dark:text-[hsl(240_20%_88%)] cursor-pointer grid place-items-center"
           title="Toggle dark mode"
         >
           {darkMode ? <Sun size={18} /> : <Moon size={18} color="#7E88C3" />}
         </button>
 
-        <div
-          style={{
-            width: "100%",
-            height: 1,
-            background: darkMode
-              ? "rgba(255,255,255,0.16)"
-              : "rgba(93, 101, 128, 0.35)",
-            borderRadius: 1,
-          }}
-        />
+        <div className="w-full h-0.5 bg-[rgba(93,101,128,0.35)] dark:bg-[rgba(255,255,255,0.16)] rounded" />
 
-        <div
-          style={{
-            width: 46,
-            height: 46,
-            borderRadius: 24,
-            overflow: "hidden",
-            background: "#fff",
-            boxShadow: darkMode
-              ? "0 16px 24px rgba(0,0,0,0.18)"
-              : "0 16px 24px rgba(124,93,250,0.08)",
-          }}
-        >
+        <div className="w-[46px] h-[46px] rounded-[24px] overflow-hidden bg-white shadow-[0_16px_24px_rgba(124,93,250,0.08)] dark:shadow-[0_16px_24px_rgba(0,0,0,0.18)]">
           <img
             src="/avatar.png"
             alt="User"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
+            className="w-full h-full object-cover"
           />
         </div>
       </div>
