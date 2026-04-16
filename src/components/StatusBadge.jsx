@@ -38,30 +38,20 @@ export default function StatusBadge({ status, darkMode }) {
 
   return (
     <span
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 8,
-        background: cfg.bg,
-        color: cfg.color,
-        padding: "6px 16px",
-        borderRadius: 6,
-        fontWeight: 700,
-        fontSize: 12,
-        minWidth: 104,
-        justifyContent: "center",
-      }}
+      className={`inline-flex items-center gap-2 px-4 py-1.5 rounded font-bold text-xs ${
+        status === "paid"
+          ? "bg-[rgba(51,214,159,0.08)] text-[#33D69F]"
+          : status === "pending"
+            ? "bg-[rgba(255,143,0,0.08)] text-[#FF8F00]"
+            : darkMode
+              ? "bg-[rgba(223,227,250,0.08)] text-[#DFE3FA]"
+              : "bg-[rgba(55,59,83,0.08)] text-[#373B53]"
+      }`}
     >
-      <span
-        style={{
-          width: 8,
-          height: 8,
-          borderRadius: "50%",
-          background: cfg.dot,
-          display: "inline-block",
-          flexShrink: 0,
-        }}
-      />
+      <div
+        className="w-2 h-2 rounded-full"
+        style={{ background: cfg.dot }}
+      ></div>
       {cfg.label}
     </span>
   );

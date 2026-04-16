@@ -9,21 +9,9 @@ export default function FormInput({
   error = false,
   darkMode,
 }) {
-  const subText = darkMode ? "hsl(231 15% 52%)" : "hsl(231 15% 55%)";
-  const text = darkMode ? "hsl(240 20% 88%)" : "hsl(231 28% 22%)";
-  const inputBg = darkMode ? "hsl(233 30% 11%)" : "#fff";
-  const inputBorder = darkMode ? "hsl(233 28% 28%)" : "hsl(240 15% 88%)";
-
   return (
-    <div style={{ marginBottom: 16 }}>
-      <label
-        style={{
-          color: subText,
-          fontSize: 12,
-          display: "block",
-          marginBottom: 8,
-        }}
-      >
+    <div className="mb-4">
+      <label className="text-[hsl(231_15%_55%)] dark:text-[hsl(231_15%_52%)] text-xs block mb-2">
         {label}
       </label>
       <input
@@ -31,19 +19,11 @@ export default function FormInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        style={{
-          width: "100%",
-          background: inputBg,
-          border: `1px solid ${error ? "#EC5757" : inputBorder}`,
-          borderRadius: 4,
-          padding: "12px 16px",
-          color: text,
-          fontSize: 13,
-          fontWeight: 700,
-          outline: "none",
-          boxSizing: "border-box",
-          fontFamily: "inherit",
-        }}
+        className={`w-full bg-white dark:bg-[hsl(233_30%_11%)] border rounded p-3 text-[hsl(231_28%_22%)] dark:text-[hsl(240_20%_88%)] text-sm font-bold outline-none box-border font-inherit ${
+          error
+            ? "border-[#EC5757]"
+            : "border-[hsl(240_15%_88%)] dark:border-[hsl(233_28%_28%)]"
+        }`}
       />
     </div>
   );

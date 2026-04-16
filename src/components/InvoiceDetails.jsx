@@ -34,138 +34,42 @@ export default function InvoiceDetail({
   onDelete,
   onMarkAsPaid,
 }) {
-  const bg = darkMode ? "hsl(233 30% 11%)" : "hsl(240 20% 96%)";
-  const cardBg = darkMode ? "hsl(233 28% 16%)" : "#fff";
-  const text = darkMode ? "hsl(240 20% 88%)" : "hsl(231 28% 22%)";
-  const subText = darkMode ? "hsl(231 15% 52%)" : "hsl(231 15% 55%)";
-  const borderColor = darkMode ? "hsl(233 28% 22%)" : "hsl(240 15% 88%)";
-  const tableBg = darkMode ? "hsl(233 30% 20%)" : "hsl(240 20% 96%)";
-  const totalBg = darkMode ? "hsl(233 32% 14%)" : "hsl(231 28% 22%)";
-
   return (
-    <div
-      style={{
-        flex: 1,
-        background: bg,
-        minHeight: "100vh",
-        padding: "64px 48px",
-        overflowY: "auto",
-        transition: "background 0.3s",
-      }}
-    >
-      <div style={{ maxWidth: 730, margin: "0 auto" }}>
-        {/* Go back */}
+    <div className="flex-1 bg-[hsl(240_20%_96%)] dark:bg-[hsl(233_30%_11%)] min-h-screen p-16 overflow-y-auto transition-colors">
+      <div className="max-w-[730px] mx-auto">
         <button
           onClick={onGoBack}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: text,
-            fontWeight: 700,
-            fontSize: 14,
-            padding: 0,
-            marginBottom: 32,
-            transition: "color 0.2s",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#9277FF")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = text)}
+          className="flex items-center gap-3 bg-none border-none cursor-pointer text-[hsl(231_28%_22%)] dark:text-[hsl(240_20%_88%)] font-bold text-sm p-0 mb-8 transition-colors hover:text-[#9277FF]"
         >
           <ChevronLeft size={16} color="#7C5DFA" />
           Go back
         </button>
 
-        {/* Status bar */}
-        <div
-          style={{
-            background: cardBg,
-            borderRadius: 8,
-            padding: "20px 28px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginBottom: 20,
-            border: `1px solid ${borderColor}`,
-            boxShadow: darkMode ? "none" : "0 2px 8px rgba(0,0,0,0.04)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <span style={{ color: subText, fontSize: 13 }}>Status</span>
+        <div className="bg-white dark:bg-[hsl(233_28%_16%)] rounded-lg p-5 flex items-center justify-between mb-5 border border-[hsl(240_15%_88%)] dark:border-[hsl(233_28%_22%)]">
+          <div className="flex items-center gap-4">
+            <span className="text-[hsl(231_15%_55%)] dark:text-[hsl(231_15%_52%)] text-sm">
+              Status
+            </span>
             <StatusBadge status={invoice.status} darkMode={darkMode} />
           </div>
 
-          <div style={{ display: "flex", gap: 8 }}>
+          <div className="flex gap-2">
             <button
               onClick={onEdit}
-              style={{
-                background: darkMode ? "hsl(233 28% 20%)" : "hsl(240 20% 96%)",
-                color: darkMode ? "#DFE3FA" : "hsl(231 28% 22%)",
-                border: "none",
-                borderRadius: 999,
-                padding: "12px 24px",
-                fontWeight: 700,
-                fontSize: 13,
-                cursor: "pointer",
-                transition: "background 0.2s",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.background = darkMode
-                  ? "hsl(233 28% 26%)"
-                  : "hsl(240 20% 90%)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.background = darkMode
-                  ? "hsl(233 28% 20%)"
-                  : "hsl(240 20% 96%)")
-              }
+              className="bg-[hsl(240_20%_96%)] dark:bg-[hsl(233_28%_20%)] text-[hsl(231_28%_22%)] dark:text-[#DFE3FA] border-none rounded-full p-3 font-bold text-sm cursor-pointer transition-colors hover:bg-[hsl(240_20%_90%)] dark:hover:bg-[hsl(233_28%_26%)]"
             >
               Edit
             </button>
             <button
               onClick={onDelete}
-              style={{
-                background: "#EC5757",
-                color: "#fff",
-                border: "none",
-                borderRadius: 999,
-                padding: "12px 24px",
-                fontWeight: 700,
-                fontSize: 13,
-                cursor: "pointer",
-                transition: "background 0.2s",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "#FF9797")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "#EC5757")
-              }
+              className="bg-[#EC5757] text-white border-none rounded-full p-3 font-bold text-sm cursor-pointer transition-colors hover:bg-[#FF9797]"
             >
               Delete
             </button>
             {invoice.status !== "paid" && (
               <button
                 onClick={onMarkAsPaid}
-                style={{
-                  background: "#7C5DFA",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: 999,
-                  padding: "12px 24px",
-                  fontWeight: 700,
-                  fontSize: 13,
-                  cursor: "pointer",
-                  transition: "background 0.2s",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.background = "#9277FF")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.background = "#7C5DFA")
-                }
+                className="bg-[#7C5DFA] text-white border-none rounded-full p-3 font-bold text-sm cursor-pointer transition-colors hover:bg-[#9277FF]"
               >
                 Mark as Paid
               </button>
@@ -173,48 +77,18 @@ export default function InvoiceDetail({
           </div>
         </div>
 
-        {/* Invoice card */}
-        <div
-          style={{
-            background: cardBg,
-            borderRadius: 8,
-            padding: "48px",
-            border: `1px solid ${borderColor}`,
-            boxShadow: darkMode ? "none" : "0 2px 8px rgba(0,0,0,0.04)",
-          }}
-        >
-          {/* Top row: ID + address */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginBottom: 40,
-            }}
-          >
+        <div className="bg-white dark:bg-[hsl(233_28%_16%)] rounded-lg p-12 border border-[hsl(240_15%_88%)] dark:border-[hsl(233_28%_22%)]">
+          <div className="flex justify-between mb-10">
             <div>
-              <div
-                style={{
-                  fontWeight: 700,
-                  fontSize: 16,
-                  color: text,
-                  marginBottom: 6,
-                }}
-              >
-                <span style={{ color: "#7C5DFA" }}>#</span>
+              <div className="font-bold text-base text-[hsl(231_28%_22%)] dark:text-[hsl(240_20%_88%)] mb-1.5">
+                <span className="text-[#7C5DFA]">#</span>
                 {invoice.id}
               </div>
-              <div style={{ color: subText, fontSize: 13 }}>
+              <div className="text-[hsl(231_15%_55%)] dark:text-[hsl(231_15%_52%)] text-sm">
                 {invoice.description}
               </div>
             </div>
-            <div
-              style={{
-                textAlign: "right",
-                color: subText,
-                fontSize: 12,
-                lineHeight: 1.8,
-              }}
-            >
+            <div className="text-right text-[hsl(231_15%_55%)] dark:text-[hsl(231_15%_52%)] text-xs leading-relaxed">
               <div>{invoice.billFrom.street}</div>
               <div>{invoice.billFrom.city}</div>
               <div>{invoice.billFrom.postCode}</div>
@@ -222,15 +96,7 @@ export default function InvoiceDetail({
             </div>
           </div>
 
-          {/* Dates + Bill To + Sent To */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gap: 32,
-              marginBottom: 40,
-            }}
-          >
+          <div className="grid grid-cols-3 gap-8 mb-10">
             <div>
               <div style={{ marginBottom: 24 }}>
                 <div style={{ color: subText, fontSize: 12, marginBottom: 8 }}>
@@ -282,7 +148,6 @@ export default function InvoiceDetail({
             </div>
           </div>
 
-          {/* Items table */}
           <div
             style={{
               background: tableBg,
@@ -390,7 +255,6 @@ export default function InvoiceDetail({
               </tbody>
             </table>
 
-            {/* Total */}
             <div
               style={{
                 background: totalBg,
