@@ -99,12 +99,15 @@ export default function InvoiceForm({
     const errs = {};
     if (!form.billFrom.street) errs.fromStreet = true;
     if (!form.billFrom.city) errs.fromCity = true;
+    else if (/\d/.test(form.billFrom.city)) errs.fromCity = true;
     if (!form.billFrom.postCode) errs.fromPostCode = true;
     if (!form.billFrom.country) errs.fromCountry = true;
     if (!form.billTo.name) errs.toName = true;
     if (!form.billTo.email) errs.toEmail = true;
+    else if (!form.billTo.email.endsWith("@gmail.com")) errs.toEmail = true;
     if (!form.billTo.street) errs.toStreet = true;
     if (!form.billTo.city) errs.toCity = true;
+    else if (/\d/.test(form.billTo.city)) errs.toCity = true;
     if (!form.billTo.postCode) errs.toPostCode = true;
     if (!form.billTo.country) errs.toCountry = true;
     if (!form.description) errs.description = true;
