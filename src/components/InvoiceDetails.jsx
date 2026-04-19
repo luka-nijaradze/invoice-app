@@ -34,6 +34,14 @@ export default function InvoiceDetail({
   onDelete,
   onMarkAsPaid,
 }) {
+  const subText = darkMode ? "hsl(231 15% 52%)" : "hsl(231 15% 55%)";
+  const text = darkMode ? "hsl(240 20% 88%)" : "hsl(231 28% 22%)";
+  const tableBg = darkMode ? "hsl(233 30% 11%)" : "hsl(240 20% 96%)";
+  const inputBg = darkMode ? "hsl(233 30% 11%)" : "#fff";
+  const inputBorder = darkMode ? "hsl(233 28% 28%)" : "hsl(240 15% 88%)";
+  const lineBorder = darkMode ? "hsl(233 28% 22%)" : "hsl(240 15% 88%)";
+  const totalBg = darkMode ? "hsl(233 28% 16%)" : "hsl(231 28% 22%)";
+
   return (
     <div className="flex-1 bg-[hsl(240_20%_96%)] dark:bg-[hsl(233_30%_11%)] min-h-screen p-16 overflow-y-auto transition-colors">
       <div className="max-w-[730px] mx-auto">
