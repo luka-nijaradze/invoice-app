@@ -437,6 +437,7 @@ export default function InvoiceForm({
           )}
 
           <button
+            type="button"
             onClick={handleSend}
             style={{
               background: "#7C5DFA",
